@@ -19,6 +19,10 @@ const ProjectDetailsPage: NextPage = () => {
             name: "gluestack",
             to: "/projects/22",
           },
+          {
+            name: "Manage Database",
+            to: "/projects/22/manage-databases",
+          },
         ]}
         project={{
           name: "gluestack project",
@@ -28,8 +32,8 @@ const ProjectDetailsPage: NextPage = () => {
               sit dolor perspiciatis ratione quam.`,
         }}
         page={{
-          title: "Edit gluestack project",
-          desc: "Edit basic details of the project name, description",
+          title: "Manage Databases",
+          desc: "Create, update, delete database for the project",
         }}
       >
         <BasicProjectDetails />

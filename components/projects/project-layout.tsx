@@ -19,55 +19,57 @@ import { SlRocket } from "react-icons/sl";
 import { BiStats } from "react-icons/bi";
 import { AiOutlineContainer } from "react-icons/ai";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface IProjectLayoutProps {
-  title?: string;
+  pageSeoTitle?: string;
   children: React.ReactNode;
+  breadcrumbs: Array<{ to: string; name: string; isCurrentPage?: boolean }>;
+  project?: {
+    name?: string;
+    desc?: string;
+  };
+  page?: {
+    title?: string;
+    desc?: string;
+  };
 }
 
-const ProjectLayout = ({ title, children }: IProjectLayoutProps) => {
+const ProjectLayout = ({
+  pageSeoTitle,
+  children,
+  breadcrumbs,
+  project,
+  page,
+}: IProjectLayoutProps) => {
   return (
-    <Layout2>
+    <Layout2 title={pageSeoTitle}>
       <Box width="100%" maxWidth={["1200px"]} p={4} mx="auto" borderRadius="md">
         {/* HEADER */}
 
         <Breadcrumb fontSize="xs">
-          <BreadcrumbItem>
-            <BreadcrumbLink href="#">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbItem>
-            <BreadcrumbLink href="#">Projects</BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbItem>
-            <BreadcrumbLink href="#" isCurrentPage>
-              Glue Stack
-            </BreadcrumbLink>
-          </BreadcrumbItem>
+          {_.map(breadcrumbs, (breadCrumbItem) => (
+            <BreadcrumbItem>
+              <Link href={breadCrumbItem?.to}>
+                <Text fontSize="xs">{breadCrumbItem?.name}</Text>
+              </Link>
+            </BreadcrumbItem>
+          ))}
         </Breadcrumb>
         <Flex align="center" justify="space-between" mt={4}>
           <Box>
             <Text fontSize={["4xl"]} fontFamily="heading" fontWeight={700}>
-              GlueStack Project
+              {project?.name}
             </Text>
-            <Text fontSize="sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-              quia eligendi corporis nostrum reprehenderit repudiandae, enim
-              consequuntur nobis veniam sequi ipsum, placeat porro quae beatae
-              sit dolor perspiciatis ratione quam.
-            </Text>
+            <Text fontSize="sm">{project?.desc}</Text>
           </Box>
 
-          <Box>
-            {/* <Button colorScheme="primary" fontWeight={400}>
-              <Box as={AiOutlinePlus} mr={1} />
-              Add Project
-            </Button> */}
-          </Box>
+          <Box></Box>
         </Flex>
 
-        <ProjectLayoutWrapper>{children}</ProjectLayoutWrapper>
+        <ProjectLayoutWrapper title={page?.title} desc={page?.desc}>
+          {children}
+        </ProjectLayoutWrapper>
       </Box>
     </Layout2>
   );
@@ -75,7 +77,15 @@ const ProjectLayout = ({ title, children }: IProjectLayoutProps) => {
 
 export default ProjectLayout;
 
-const ProjectLayoutWrapper = ({ children }: { children: React.ReactNode }) => {
+const ProjectLayoutWrapper = ({
+  children,
+  title,
+  desc,
+}: {
+  children: React.ReactNode;
+  title?: string;
+  desc?: string;
+}) => {
   return (
     <>
       <Flex direction="row" width="100%" mt={6}>
@@ -83,11 +93,9 @@ const ProjectLayoutWrapper = ({ children }: { children: React.ReactNode }) => {
 
         <Box ml={4} flex={1} p={4} bg="white" borderRadius="md">
           <Text fontSize={["2xl"]} fontFamily="heading" fontWeight={700}>
-            Edit gluestack project
+            {title}
           </Text>
-          <Text fontSize="sm">
-            Edit basic details of the project name, description
-          </Text>
+          <Text fontSize="sm">{desc}</Text>
 
           <Box mt={4}>{children}</Box>
         </Box>
@@ -105,12 +113,12 @@ const getProjectSidebarMenuItems = (_projectId: number) => {
     },
     {
       name: "Database",
-      to: `/projects/${_projectId}/database`,
+      to: `/projects/${_projectId}/manage-databases`,
       icon: FiDatabase,
     },
     {
       name: "Storage",
-      to: `/projects/${_projectId}/storage`,
+      to: `/projects/${_projectId}/manage-storages`,
       icon: TiCloudStorageOutline,
     },
     {
@@ -141,6 +149,13 @@ const getProjectSidebarMenuItems = (_projectId: number) => {
   ];
 };
 const ProjectSidebar = () => {
+  const router = useRouter();
+  const isRouteActive = (_route: string, _currentRoute?: string) => {
+    return _currentRoute?.includes(_route.split("/").reverse()[0])
+      ? true
+      : false;
+  };
+
   return (
     <>
       <Box>
@@ -162,6 +177,7 @@ const ProjectSidebar = () => {
                   ? true
                   : false
               }
+              isActive={isRouteActive(menuItem?.to, router?.pathname)}
             />
           ))}
         </Box>
@@ -175,6 +191,7 @@ const ProjectSidebarMenuItem = (props: {
   to: string;
   icon: any;
   isLastItem?: boolean;
+  isActive?: boolean;
 }) => {
   return (
     <>
@@ -183,7 +200,9 @@ const ProjectSidebarMenuItem = (props: {
           px={3}
           py={3}
           align="center"
-          borderBottom={props?.isLastItem ? "" : "1px solid #E7E7E7"}
+          // borderBottom={props?.isLastItem ? "" : "1px solid #E7E7E7"}
+          bg={props?.isActive ? "primary.100" : "transparent"}
+          borderRadius={props?.isActive ? "md" : "0"}
         >
           <Box color="black" mr={2} as={props?.icon} />
 
