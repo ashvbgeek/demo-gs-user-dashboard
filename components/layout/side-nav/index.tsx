@@ -26,7 +26,12 @@ const SideNav = ({
 }) => {
   return (
     <>
-      <Box width="100%" maxWidth="260px">
+      <Box
+        width="100%"
+        maxWidth="260px"
+        position={["relative", "relative", "absolute", "absolute"]}
+        overflowY="auto"
+      >
         <Box className={Styles?.desktopOnly}>
           <SideNavWrapper />
         </Box>
@@ -42,8 +47,8 @@ const SideNav = ({
             }}
           >
             <DrawerOverlay />
-            <DrawerContent>
-              <DrawerBody bg="red.200">
+            <DrawerContent maxWidth="260px">
+              <DrawerBody>
                 <SideNavWrapper onClose={onClose} />
               </DrawerBody>
             </DrawerContent>
@@ -62,12 +67,14 @@ const SideNavWrapper = ({ onClose }: { onClose?: () => void }) => {
       <Flex
         width="100%"
         maxWidth="260px"
-        height="100vh"
+        minHeight="100vh"
+        height="100%"
         position="fixed"
         top="0"
         left="0"
         bg="white"
         direction="column"
+        overflowY="auto"
       >
         <Flex py="45px" textAlign="center">
           <Box
@@ -96,7 +103,7 @@ const SideNavWrapper = ({ onClose }: { onClose?: () => void }) => {
           </Button>
         </Flex>
 
-        <Flex direction="column" flex={1} width="100%" overflowY="auto">
+        <Flex direction="column" flex={1} width="100%">
           <SideNavMenu />
           <LogoutButton href="/" />
         </Flex>
@@ -114,11 +121,11 @@ type LogoutButtonProps =
 const LogoutButton = (props: LogoutButtonProps) => {
   return (
     <>
-      <Box p="28px" bg="white">
+      <Box p={4} bg="white">
         <Link href={`https://topgeek.io/signout?redirectUrl=`}>
-          <Flex px="18px" py="20.5" align="center" cursor="pointer">
+          <Flex px={4} py={3} align="center" cursor="pointer">
             <Box as={FiLogOut} mr={3} color="text.regular" />
-            <Text>Logout</Text>
+            <Text fontSize="sm">Logout</Text>
           </Flex>
         </Link>
       </Box>

@@ -19,7 +19,7 @@ const SideNavMenu = () => {
 
   return (
     <>
-      <Box width="100%" flex={1} p="28px">
+      <Box width="100%" flex={1} p={4}>
         {_.map(menu, (m) => {
           return (
             <MenuItem
@@ -103,8 +103,8 @@ const MenuItem = ({
       <>
         <Link href={isComingSoon ? "" : to ? to : "/"}>
           <Flex
-            px="18px"
-            py="16px"
+            px={4}
+            py={3}
             borderRadius="6px"
             align="center"
             cursor="pointer"
@@ -122,12 +122,13 @@ const MenuItem = ({
             <Text
               flex={1}
               color={isRouteActive() ? "primary.500" : "text.regular"}
+              fontSize={"sm"}
             >
               {name}
             </Text>
             {isComingSoon && (
               <Box
-                fontSize="14px"
+                fontSize={"xs"}
                 color="#254A72"
                 bg="#E8F3FF"
                 py={1}
@@ -146,8 +147,8 @@ const MenuItem = ({
   return (
     <>
       <Flex
-        px="18px"
-        py="20.5"
+        px={4}
+        py={3}
         align="center"
         cursor="pointer"
         pt="0"
@@ -165,7 +166,11 @@ const MenuItem = ({
         color={isChildActive() ? "primary.500" : "text.regular"}
       >
         <Box fontSize="20px" as={isChildActive() ? filledIcon : icon} mr={3} />
-        <Text flex={1} color={isChildActive() ? "primary.500" : "text.regular"}>
+        <Text
+          fontSize="sm"
+          flex={1}
+          color={isChildActive() ? "primary.500" : "text.regular"}
+        >
           {name}
         </Text>
         {sub && sub.length && (
@@ -188,6 +193,7 @@ const MenuItem = ({
                       borderRadius="6px"
                     >
                       <Text
+                        fontSize="sm"
                         fontWeight={subItem?.to === activeRoute ? 600 : 400}
                         color={
                           subItem?.to === activeRoute

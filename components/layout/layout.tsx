@@ -19,23 +19,21 @@ export default function Layout(props: {
       <Box
         bg="page.bg"
         minHeight="100vh"
-        paddingLeft={[0, 0, 0, "260px"]}
         borderLeft="1px solid #E7E7E7"
+        position="relative"
       >
         <SideNav {...sideNavDrawerState} />
-        {/* <TopNav
-            session={session}
-            sessionLoading={loading}
-            toggleSidebar={() => {
-              sideNavDrawerState?.onToggle();
-            }}
-            company={{ data: company, loading: companyLoading }}
-          /> */}
+        <TopNav
+          toggleSidebar={() => {
+            sideNavDrawerState?.onToggle();
+          }}
+        />
         <Box
-          width="100%"
+          flex={1}
           height="100%"
           minHeight="calc(100vh - 120px)"
-          p="28px"
+          p={[4]}
+          marginLeft={[0, 0, 0, "260px"]}
         >
           {props?.children}
         </Box>
