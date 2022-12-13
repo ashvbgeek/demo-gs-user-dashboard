@@ -2,7 +2,12 @@ import Head from 'next/head'
 import Image from "next/image";
 import { Layout } from "../components/layout";
 import { Formik } from "formik";
-import { FormikInputField } from "../components/composites";
+import {
+  DateInput,
+  FormikInputField,
+  Input,
+  TextArea,
+} from "../components/composites";
 
 export default function Home() {
   return (
@@ -24,6 +29,10 @@ export default function Home() {
           </>
         )}
       </Formik>
+
+      <Input title="test" />
+      <TextArea title="test" />
+      <DateInput title="test" />
     </Layout>
   );
 }

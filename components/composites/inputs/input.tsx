@@ -13,12 +13,23 @@ export interface IInput
     Omit<IInputWrapperProps, "children"> {}
 
 export const Input = (props: IInput) => {
-  const { title, errorMessage } = props;
+  const { title, errorMessage, titleAction } = props;
 
   return (
     <>
-      <InputWrapper title={title} errorMessage={errorMessage}>
-        <CInput p="16px" height="56px" colorScheme="primary" {...props} />
+      <InputWrapper
+        title={title}
+        errorMessage={errorMessage}
+        titleAction={titleAction}
+      >
+        <CInput
+          borderWidth="0.5px"
+          fontSize="sm"
+          py={2}
+          px={3}
+          colorScheme="primary"
+          {...props}
+        />
       </InputWrapper>
     </>
   );
@@ -39,7 +50,7 @@ export const InputWrapper = (props: IInputWrapperProps) => {
         <Flex justify="space-between">
           <Box>
             {title && (
-              <Text fontWeight="500" mb="8px" fontSize="md">
+              <Text fontSize="sm" mb={2}>
                 {title}
               </Text>
             )}
