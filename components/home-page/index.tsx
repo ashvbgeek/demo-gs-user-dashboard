@@ -11,19 +11,28 @@ import {
   BreadcrumbSeparator,
   IconButton,
   Badge,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
 } from "@chakra-ui/react";
 import { AiOutlinePlus, AiOutlineEdit } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { GrView } from "react-icons/gr";
 import { Input } from "../composites";
 import { Paginator } from "../composites/paginator";
+import { AiFillCaretDown } from "react-icons/ai";
 
 const HomePage = () => {
   return (
     <Box width="100%" maxWidth={["1200px"]} p={4} mx="auto" borderRadius="md">
       {/* HEADER */}
 
-      <Breadcrumb>
+      <Breadcrumb fontSize="xs">
         <BreadcrumbItem>
           <BreadcrumbLink href="#">Home</BreadcrumbLink>
         </BreadcrumbItem>
@@ -97,6 +106,11 @@ const ProjectsDataGrid = () => {
   );
 };
 
+// no of reqs
+// bandwidth
+// Project upload sizes
+// created at => last deployed at
+
 const ProjectDataBlock = () => {
   return (
     <Flex
@@ -112,55 +126,54 @@ const ProjectDataBlock = () => {
           GlueStack
         </Text>
         <Text fontSize="xs" fontWeight={300}>
-          Created At: 27th Oct,2022
+          Last Deployed : 24 mins ago
         </Text>
       </Box>
 
       <Box>
-        <table>
-          <tr>
-            <td>
-              <Text fontSize="xs" fontWeight={300}>
-                Status :
-              </Text>
-            </td>
-            <td>
-              <Box
-                display="inline"
-                fontSize="xs"
-                px={2}
-                py={1}
-                bg="green.100"
-                color="green.500"
-                textTransform="uppercase"
-                borderRadius="sm"
-              >
-                Deployed
-              </Box>
-              {/* <Badge
-                // variant="outline"
-                colorScheme="green"
-                // textTransform="unset"
-              >
-                Deployed
-              </Badge> */}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Text fontSize="xs" fontWeight={300}>
-                URL :
-              </Text>
-            </td>
-            <td>
+        <Grid templateColumns={"repeat(1, 1fr)"} gap={2}>
+          <Flex align="center">
+            <Box
+              display="inline"
+              fontSize="xs"
+              px={2}
+              py={1}
+              bg="green.100"
+              color="green.500"
+              textTransform="uppercase"
+              borderRadius="6px"
+              fontWeight={500}
+            >
+              Deployed
+            </Box>
+          </Flex>
+          <Flex align="center">
+            <Box>
               <Text fontSize="xs">https://geekyants.com/</Text>
-            </td>
-          </tr>
-        </table>
+            </Box>
+          </Flex>
+        </Grid>
       </Box>
 
       <Box mx={4}>
-        <Grid templateColumns={"repeat(2, 1fr)"} gap={2}>
+        <Menu>
+          <MenuButton
+            fontWeight={400}
+            fontSize="xs"
+            py={3}
+            as={Button}
+            rightIcon={<AiFillCaretDown />}
+          >
+            Manage
+          </MenuButton>
+          <MenuList>
+            <MenuItem fontSize="xs"> Manage Database</MenuItem>
+            <MenuItem fontSize="xs"> Manage Storage</MenuItem>
+            <MenuItem fontSize="xs"> Manage Settings</MenuItem>
+            <MenuItem fontSize="xs"> Manage Env Settings</MenuItem>
+          </MenuList>
+        </Menu>
+        {/* <Grid templateColumns={"repeat(2, 1fr)"} gap={2}>
           <Button
             colorScheme="primary"
             size="xs"
@@ -197,7 +210,7 @@ const ProjectDataBlock = () => {
           >
             Deployments
           </Button>
-        </Grid>
+        </Grid> */}
       </Box>
 
       <Box>

@@ -50,7 +50,12 @@ export const InputWrapper = (props: IInputWrapperProps) => {
         <Flex justify="space-between">
           <Box>
             {title && (
-              <Text fontSize="sm" mb={2}>
+              <Text
+                fontSize="xs"
+                fontWeight="600"
+                textTransform="uppercase"
+                mb={1}
+              >
                 {title}
               </Text>
             )}

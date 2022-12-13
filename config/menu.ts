@@ -20,14 +20,14 @@ import { BsBriefcaseFill, BsBriefcase } from "react-icons/bs";
 
 const menu = [
   {
-    name: "Dashboard",
+    name: "Edit",
     to: "/",
     icon: MdOutlineDashboard,
     filledIcon: MdDashboard,
     permissions: [],
   },
   {
-    name: "Inbox",
+    name: "Database",
     to: "/inbox",
     icon: AiOutlineMail,
     filledIcon: AiFillMail,
@@ -35,7 +35,7 @@ const menu = [
     isComingSoon: true,
   },
   {
-    name: "Tasks",
+    name: "Storage",
     to: "/tasks",
     icon: AiOutlineCheckSquare,
     filledIcon: AiFillCheckSquare,
@@ -43,28 +43,28 @@ const menu = [
     isComingSoon: true,
   },
   {
-    name: "Jobs",
+    name: "Settings",
     to: "/jobs",
     icon: BsBriefcase,
     filledIcon: BsBriefcaseFill,
     permissions: [],
   },
   {
-    name: "Candidates",
+    name: "Env. Settings",
     to: "/candidates",
     icon: MdOutlinePeopleAlt,
     filledIcon: MdPeopleAlt,
     permissions: [],
   },
   {
-    name: "Career Page",
+    name: "Deployments",
     to: "/career",
     icon: MdLaptopMac,
     filledIcon: MdLaptopMac,
     permissions: [],
   },
   {
-    name: "Settings",
+    name: "Stats",
     icon: RiSettings3Line,
     filledIcon: RiSettings3Fill,
     sub: [
@@ -99,6 +99,14 @@ const menu = [
         permissions: [],
       },
     ],
+  },
+
+  {
+    name: "Containers",
+    to: "/career",
+    icon: MdLaptopMac,
+    filledIcon: MdLaptopMac,
+    permissions: [],
   },
 ];
 
