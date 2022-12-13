@@ -19,7 +19,7 @@ export default function Layout(props: {
       <Box
         bg="page.bg"
         minHeight="100vh"
-        paddingLeft={[0, 0, 0, "360px"]}
+        paddingLeft={[0, 0, 0, "260px"]}
         borderLeft="1px solid #E7E7E7"
       >
         <SideNav {...sideNavDrawerState} />

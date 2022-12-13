@@ -26,7 +26,7 @@ const SideNav = ({
 }) => {
   return (
     <>
-      <Box width="100%" maxWidth="360px">
+      <Box width="100%" maxWidth="260px">
         <Box className={Styles?.desktopOnly}>
           <SideNavWrapper />
         </Box>
@@ -61,7 +61,7 @@ const SideNavWrapper = ({ onClose }: { onClose?: () => void }) => {
     <>
       <Flex
         width="100%"
-        maxWidth="360px"
+        maxWidth="260px"
         height="100vh"
         position="fixed"
         top="0"
