@@ -1,38 +1,10 @@
-import Head from 'next/head'
-import Image from "next/image";
-import { Layout } from "../components/layout";
-import { Formik } from "formik";
-import {
-  DateInput,
-  FormikInputField,
-  Input,
-  TextArea,
-} from "../components/composites";
+import DashboardPage from "../components/dashboard-page";
+import Layout2 from "../components/layout/layout2";
 
 export default function Home() {
   return (
-    <Layout>
-      <Formik
-        initialValues={{
-          firstName: "",
-          lastName: "",
-          email: "",
-        }}
-        onSubmit={(values) => {
-          // same shape as initial values
-          console.log(values);
-        }}
-      >
-        {({ errors, touched }) => (
-          <>
-            <FormikInputField name="firstName" title="First Name" />
-          </>
-        )}
-      </Formik>
-
-      <Input title="test" />
-      <TextArea title="test" />
-      <DateInput title="test" />
-    </Layout>
+    <>
+      <DashboardPage />
+    </>
   );
 }
