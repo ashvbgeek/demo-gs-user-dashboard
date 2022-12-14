@@ -200,72 +200,43 @@ const ProjectDataBlock = () => {
         </Box>
 
         <Box mx={4}>
-          <Menu>
-            <MenuButton
-              fontWeight={400}
-              fontSize="xs"
-              py={3}
-              as={Button}
-              rightIcon={<AiFillCaretDown />}
-            >
-              Manage
-            </MenuButton>
-            <MenuList>
-              <MenuItem fontSize="xs"> Manage Database</MenuItem>
-              <MenuItem fontSize="xs"> Manage Storage</MenuItem>
-              <MenuItem fontSize="xs"> Manage Settings</MenuItem>
-              <MenuItem fontSize="xs"> Manage Env Settings</MenuItem>
-            </MenuList>
-          </Menu>
-          {/* <Grid templateColumns={"repeat(2, 1fr)"} gap={2}>
-          <Button
-            colorScheme="primary"
-            size="xs"
-            py={1}
-            px={2}
-            fontWeight={400}
-          >
-            Manage Database
-          </Button>
-          <Button
-            colorScheme="primary"
-            size="xs"
-            py={1}
-            px={2}
-            fontWeight={400}
-          >
-            Manage Storage
-          </Button>
-          <Button
-            colorScheme="primary"
-            size="xs"
-            py={1}
-            px={2}
-            fontWeight={400}
-          >
-            Manage Settings
-          </Button>
-          <Button
-            colorScheme="primary"
-            size="xs"
-            py={1}
-            px={2}
-            fontWeight={400}
-          >
-            Deployments
-          </Button>
-        </Grid> */}
+          <Grid templateColumns={"repeat(4, 1fr)"} gap={2}>
+            <Text fontSize="sm" fontWeight={300}>
+              Bandwidth :
+            </Text>
+
+            <Text fontSize="sm" fontWeight={500}>
+              1GB / 4 GB
+            </Text>
+
+            <Text fontSize="sm" fontWeight={300}>
+              Disk Space :
+            </Text>
+
+            <Text fontSize="sm" fontWeight={500}>
+              1GB / 4 GB
+            </Text>
+
+            <Text fontSize="sm" fontWeight={300}>
+              No of reqs :
+            </Text>
+
+            <Text fontSize="sm" fontWeight={500}>
+              400
+            </Text>
+
+            <Text fontSize="sm" fontWeight={300}>
+              Upload size :
+            </Text>
+
+            <Text fontSize="sm" fontWeight={500}>
+              200 mb (latest)
+            </Text>
+          </Grid>
         </Box>
 
         <Box>
           <Grid templateColumns={"repeat(3, 1fr)"} gap={4}>
-            <IconButton
-              icon={<GrView />}
-              aria-label="test"
-              borderRadius="50%"
-              size="xs"
-            />
-
             <IconButton
               icon={<AiOutlineEdit />}
               aria-label="test"
