@@ -5,9 +5,12 @@ const BasicProjectDetails = () => {
   return (
     <>
       <Grid gap={4} my={6}>
-        <Input title="Project Name" />
+        <Input title="Project Name" value="gluestack project" />
 
-        <TextArea title="Project Description" />
+        <TextArea
+          title="Project Description"
+          value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quia eligendi corporis nostrum reprehenderit repudiandae, enim consequuntur nobis veniam sequi ipsum, placeat porro quae beatae sit dolor perspiciatis ratione quam."
+        />
 
         <Flex justify="space-between">
           <Box></Box>

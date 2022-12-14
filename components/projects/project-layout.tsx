@@ -32,6 +32,7 @@ interface IProjectLayoutProps {
   page?: {
     title?: string;
     desc?: string;
+    actionButton?: React.ReactNode;
   };
 }
 
@@ -67,7 +68,11 @@ const ProjectLayout = ({
           <Box></Box>
         </Flex>
 
-        <ProjectLayoutWrapper title={page?.title} desc={page?.desc}>
+        <ProjectLayoutWrapper
+          title={page?.title}
+          desc={page?.desc}
+          topActionButton={page?.actionButton}
+        >
           {children}
         </ProjectLayoutWrapper>
       </Box>
@@ -81,10 +86,12 @@ const ProjectLayoutWrapper = ({
   children,
   title,
   desc,
+  topActionButton,
 }: {
   children: React.ReactNode;
   title?: string;
   desc?: string;
+  topActionButton?: React.ReactNode;
 }) => {
   return (
     <>
@@ -92,10 +99,15 @@ const ProjectLayoutWrapper = ({
         <ProjectSidebar />
 
         <Box ml={4} flex={1} p={4} bg="white" borderRadius="md">
-          <Text fontSize={["2xl"]} fontFamily="heading" fontWeight={700}>
-            {title}
-          </Text>
-          <Text fontSize="sm">{desc}</Text>
+          <Flex align="center" justify="space-between">
+            <Box>
+              <Text fontSize={["2xl"]} fontFamily="heading" fontWeight={700}>
+                {title}
+              </Text>
+              <Text fontSize="sm">{desc}</Text>
+            </Box>
+            <Box>{topActionButton}</Box>
+          </Flex>
 
           <Box mt={4}>{children}</Box>
         </Box>
@@ -108,7 +120,7 @@ const getProjectSidebarMenuItems = (_projectId: number) => {
   return [
     {
       name: "Basic details",
-      to: `/projects/${_projectId}`,
+      to: `/projects/${_projectId}/edit`,
       icon: AiOutlineEdit,
     },
     {
@@ -162,11 +174,11 @@ const ProjectSidebar = () => {
         <Box
           overflow="hidden"
           width="100%"
-          maxWidth="160px"
-          minWidth="160px"
+          maxWidth="200px"
+          minWidth="200px"
           bg="white"
           // p={4}
-          px={2}
+          p={2}
           borderRadius="md"
         >
           {_.map(getProjectSidebarMenuItems(22), (menuItem, index) => (

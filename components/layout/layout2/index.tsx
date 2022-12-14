@@ -1,6 +1,10 @@
 import { Box, Flex, Text, Button, Image, Avatar } from "@chakra-ui/react";
 import { MdOutlineDashboard, MdDashboard } from "react-icons/md";
 import _ from "lodash";
+import { SlDocs } from "react-icons/sl";
+import { GiToken } from "react-icons/gi";
+import { AiOutlineProject } from "react-icons/ai";
+import Link from "next/link";
 
 interface ILayout2Props {
   title?: string;
@@ -43,23 +47,23 @@ const menuItems = [
   },
   {
     name: "Projects",
-    to: "/",
-    icon: MdOutlineDashboard,
+    to: "/projects",
+    icon: AiOutlineProject,
     filledIcon: MdDashboard,
     permissions: [],
   },
   {
     name: "Tokens",
-    to: "/",
-    icon: MdOutlineDashboard,
+    to: "/tokens",
+    icon: GiToken,
     filledIcon: MdDashboard,
     permissions: [],
   },
 
   {
     name: "Docs",
-    to: "/",
-    icon: MdOutlineDashboard,
+    to: "https://docs.nativebase.io/",
+    icon: SlDocs,
     filledIcon: MdDashboard,
     permissions: [],
   },
@@ -88,15 +92,17 @@ const Header = () => {
 
           <Flex>
             {_.map(menuItems, (menuItem) => (
-              <Button
-                fontWeight={400}
-                colorScheme="primary"
-                variant="ghost"
-                fontSize="sm"
-              >
-                <Box as={menuItem?.icon} mr={1} />
-                {menuItem?.name}
-              </Button>
+              <Link href={menuItem?.to}>
+                <Button
+                  fontWeight={400}
+                  colorScheme="primary"
+                  variant="ghost"
+                  fontSize="sm"
+                >
+                  <Box as={menuItem?.icon} mr={1} />
+                  {menuItem?.name}
+                </Button>
+              </Link>
             ))}
           </Flex>
         </Flex>

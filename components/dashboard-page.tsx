@@ -73,9 +73,17 @@ interface IDashboardGridBlock {
   };
 }
 
+
+import { MdOutlineDashboard, MdDashboard } from "react-icons/md";
+import _ from "lodash";
+import { SlDocs } from "react-icons/sl";
+import { GiToken } from "react-icons/gi";
+import { AiOutlineProject } from "react-icons/ai";
+import { RiBillLine } from "react-icons/ri";
+
 const DashboardActions: Array<IDashboardGridBlock> = [
   {
-    icon: FaUserCircle,
+    icon: AiOutlineProject,
     title: "Manage Projects",
     desc: "Manage all of your projects from one place",
     button: {
@@ -84,7 +92,7 @@ const DashboardActions: Array<IDashboardGridBlock> = [
     },
   },
   {
-    icon: FaBriefcase,
+    icon: GiToken,
     title: "Manage Tokens",
     desc: "Manage all of your tokens from one place",
     button: {
@@ -93,16 +101,16 @@ const DashboardActions: Array<IDashboardGridBlock> = [
     },
   },
   {
-    icon: MdGroupAdd,
+    icon: RiBillLine,
     title: "Billings",
     desc: "Lorem ipsum dolor sit amet consectetur elit.",
     button: {
       text: "Billing",
-      link: "",
+      link: "/billings",
     },
   },
   {
-    icon: MdOutlineLaptopMac,
+    icon: SlDocs,
     title: "Documentations",
     desc: "Need some help, lost a little, docs to the rescue",
     button: {
